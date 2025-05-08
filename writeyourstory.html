@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bad Drivers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      gap: 1rem;
+      width: 65vw;
+      height: 70vh;
+      max-width: 1200px;
+      max-height: 900px;
+      box-sizing: border-box;
+      padding: 2rem;
+      border: 2px solid black;
+      position: relative;
+    }
+
+    .left-box {
+      grid-column: span 6;  
+      grid-row: 1 / span 8;
+      border: 1px solid black;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      margin-top: 2rem;  
+      position: relative;
+    }
+
+    .story-section {
+      grid-column: span 6;  
+      grid-row: 1 / span 12;  
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;  
+    }
+
+    input[type="file"] {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      color: #000;
+      transition: margin-top 0.3s ease;
+    }
+
+    .preview {
+      max-width: 100%;
+      max-height: 300px;
+      display: none;
+      margin-top: 1rem;
+    }
+
+    textarea {
+      width: 90%;
+      height: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid #ffffff;
+      background: #fff;
+      color: #000;
+      resize: vertical;
+      margin-top: 1rem;
+      border-radius: 0;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;  
+      background: #000;
+      color: #fff;
+      border: none;
+      font-size: 0.9rem;  
+      cursor: pointer;
+      border-radius: 0;
+      margin-left: 20rem;  
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    .success-message {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .click-text {
+      text-align: center;
+      font-size: 22.5px;
+      margin-top: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
+
+    .click-text:hover {
+      color: lightgray;
+    }
+
+     .upload-label {
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      color: rgb(112, 112, 112); 
+      margin-bottom: 0.5rem;
+      position: absolute;
+      top: 10px;  
+      left: 1rem;  
+      font-weight: normal;  
+      letter-spacing: 1px;  
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left-box">
+      <div class="upload-label">Upload a Photo of your car</div>
+      <input type="file" accept="image/*" id="photoInput" />
+      <img id="previewImage" class="preview" alt="Image preview" />
+    </div>
+
+    <div class="story-section">
+      <textarea id="storyText" placeholder="Tell your story..."></textarea>
+      <button id="submitBtn">Submit</button>
+    </div>
+
+    <p id="successMessage" class="success-message">Your story has been submitted successfully!</p>
+  </div>
+
+  <p class="click-text" onclick="window.location.href='stories.html'">Click to see stories</p>
+
+  <script>
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const photoInput = document.getElementById('photoInput');
+    const previewImage = document.getElementById('previewImage');
+    const storyText = document.getElementById('storyText');
+
+    submitBtn.addEventListener('click', () => {
+      const fileSelected = photoInput.files.length > 0;
+      const storyFilled = storyText.value.trim() !== "";
+
+      if (fileSelected && storyFilled) {
+        successMessage.style.display = 'block';
+
+        setTimeout(() => {
+          window.location.href = 'stories.html';
+        }, 2000);
+      } else {
+        alert("Please fill out both fields.");
+      }
+    });
+
+    photoInput.addEventListener('change', () => {
+      const file = photoInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+
+           const parentDiv = document.querySelector('.left-box');
+          parentDiv.appendChild(photoInput);  
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>

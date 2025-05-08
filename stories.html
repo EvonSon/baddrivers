@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bad Drivers</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;     
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      font-family: sans-serif;
+      position: relative;  
+    }
+
+    .container {
+      width: 65vw; 
+      height: 70vh; 
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 0;
+      display: grid;
+      grid-template-columns: repeat(20, 1fr);
+      grid-template-rows: repeat(14, 1fr);
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .spot {
+      border: 1px solid black;
+      border-bottom: 0px;
+      background-color: white;
+      height: 50px; 
+      width: 100%;
+      position: relative;
+      cursor: pointer;  
+    }
+
+    .top-row, .bottom-row {
+      grid-column: span 20;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .top-row {
+      border-top: none;   
+    }
+
+    .top-row .spot {
+      border-top: none;
+    }
+
+    .bottom-row .spot {
+      border-top: 0px;   
+    }
+
+    .center-block {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      border-top: 1px solid black;   
+      height: 80%;
+      margin-top: -50px;
+    }
+
+    .center-block .spot {
+      border-top: 0px;   
+      border-bottom: 1px solid black; 
+      height: 90px;
+    }
+
+    .side-col {
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+    }
+
+    .side-col .spot {
+      border-left: none;   
+      border-right: none; 
+    }
+
+    .caption {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      color: black;
+    }
+
+    .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: rgb(227, 9, 9);
+      z-index: 2;
+    }
+
+    .yellow-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #fcc200;
+      z-index: 2;
+    }
+
+    .green-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #008000;
+      z-index: 2;
+    }
+
+    .car {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      max-height: 75%;
+      object-fit: contain;
+      z-index: 0;
+    }
+
+     .home-link {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 30px; 
+      height: auto;
+      z-index: 10;
+    }
+    .left-car {
+      position: absolute;
+      top: 35%;
+      left: 60%;
+      transform: translate(-50%, -20%);
+      max-height: 50%; 
+      object-fit: contain;
+      z-index: 0;
+  }
+
+  .right-car {
+      position: absolute;
+      top: 35%;
+      left: 40%;
+      transform: translate(-50%, -20%);
+      max-height: 50%; 
+      object-fit: contain;
+      z-index: 0;
+  }
+
+    .top-car {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    max-height: 90%; 
+    object-fit: contain;
+    z-index: 0;
+}
+
+
+    .bottom-car {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    max-height: 90%; 
+    object-fit: contain;
+    z-index: 0;
+}
+
+
+  </style>
+</head>
+<body>
+
+   <a href="index.html">
+    <img src="images/home.png" alt="Home" class="home-link">
+  </a>
+
+  <div class="container">
+    <div class="top-row" style="grid-row: 1 / 2; grid-column: 5 / 17;">
+      <div class="spot"><img src="images/car1.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="top-car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="top-car"></div>
+    </div>
+
+    <div class="bottom-row" style="grid-row: 14 / 15; grid-column: 5 / 17;">
+      <div class="spot"><img src="images/car1.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="bottom-car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="bottom-car"></div>
+    </div>
+
+    <div class="side-col" style="grid-column: 1 / 2; grid-row: 5 / 11;">
+      <div class="spot"><img src="images/leftcar1.png" alt="Car" class="left-car"></div>
+      <div class="spot"><img src="images/leftcar2.png" alt="Car" class="left-car"></div>
+      <div class="spot"><img src="images/leftcar3.png" alt="Car" class="left-car"></div>
+      <div class="spot"><img src="images/leftcar4.png" alt="Car" class="left-car"></div>
+      <div class="spot"><img src="images/leftcar1.png" alt="Car" class="left-car"></div>
+      <div class="spot"><img src="images/leftcar2.png" alt="Car" class="left-car"></div>
+    </div>
+
+    <div class="side-col" style="grid-column: 20 / 21; grid-row: 5 / 11;">
+      <div class="spot"><img src="images/rightcar1.png" alt="Car" class="right-car"></div>
+      <div class="spot"><img src="images/rightcar2.png" alt="Car" class="right-car"></div>
+      <div class="spot"><img src="images/rightcar3.png" alt="Car" class="right-car"></div>
+      <div class="spot"><img src="images/rightcar4.png" alt="Car" class="right-car"></div>
+      <div class="spot"><img src="images/rightcar2.png" alt="Car" class="right-car"></div>
+      <div class="spot"><img src="images/rightcar4.png" alt="Car" class="right-car"></div>
+    </div>
+
+    <div class="center-block" style="grid-column: 5 / 11; grid-row: 7 / 9;">
+      <div class="spot"><img src="images/car1.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="car"></div>
+    </div>
+
+    <div class="center-block" style="grid-column: 11 / 17; grid-row: 7 / 9;">
+      <div class="spot"><img src="images/car1.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car1.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car2.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car3.png" alt="Car" class="car"></div>
+      <div class="spot"><img src="images/car4.png" alt="Car" class="car"></div>
+    </div>
+  </div>
+
+  <p class="caption">Click to see stories.</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const spots = document.querySelectorAll('.spot');
+
+      // Red dot
+      const selectedSpotIndex = localStorage.getItem('selectedSpot');
+      if (selectedSpotIndex !== null) {
+        const selectedSpot = spots[selectedSpotIndex];
+        if (selectedSpot) {
+          const circle = document.createElement('div');
+          circle.classList.add('circle');
+          selectedSpot.appendChild(circle);
+
+          circle.addEventListener('click', () => {
+            window.location.href = 'snow.html';
+          });
+        }
+      }
+
+      // Yellow dots
+      const yellowDotIndexes = [5, 25]; 
+      yellowDotIndexes.forEach((index, i) => {
+        if (spots[index]) {
+          const yellowDot = document.createElement('div');
+          yellowDot.classList.add('yellow-dot');
+          spots[index].appendChild(yellowDot);
+          
+          yellowDot.addEventListener('click', () => {
+            if (i === 0) {
+              window.location.href = 'yellow.html';
+            } else {
+              window.location.href = 'yelloww.html';
+            }
+          });
+        }
+      });
+
+      // Green dot
+      const greenDotIndex = 45; 
+      if (spots[greenDotIndex]) {
+        const greenDot = document.createElement('div');
+        greenDot.classList.add('green-dot');
+        spots[greenDotIndex].appendChild(greenDot);
+
+        greenDot.addEventListener('click', () => {
+          window.location.href = 'green.html';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

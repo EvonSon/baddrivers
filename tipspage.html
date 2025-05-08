@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bad Drivers</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      width: 100vw;
+      height: 85vh;
+      border: 0.5px solid black;
+    }
+
+    .cell {
+      border: 0.5px solid black;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      outline: none;
+      overflow: auto;
+    }
+
+    .cell:focus {
+      background-color: #f9f9f9;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin: 5px;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 2px 8px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+    <!-- 16 editable cells -->
+    <div class="cell" contenteditable="true" data-index="0"></div>
+    <div class="cell" contenteditable="true" data-index="1"></div>
+    <div class="cell" contenteditable="true" data-index="2"></div>
+    <div class="cell" contenteditable="true" data-index="3"></div>
+    <div class="cell" contenteditable="true" data-index="4"></div>
+    <div class="cell" contenteditable="true" data-index="5"></div>
+    <div class="cell" contenteditable="true" data-index="6"></div>
+    <div class="cell" contenteditable="true" data-index="7"></div>
+    <div class="cell" contenteditable="true" data-index="8"></div>
+    <div class="cell" contenteditable="true" data-index="9"></div>
+    <div class="cell" contenteditable="true" data-index="10"></div>
+    <div class="cell" contenteditable="true" data-index="11"></div>
+    <div class="cell" contenteditable="true" data-index="12"></div>
+    <div class="cell" contenteditable="true" data-index="13"></div>
+    <div class="cell" contenteditable="true" data-index="14"></div>
+    <div class="cell" contenteditable="true" data-index="15"></div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn" onclick="saveGrid()">Submit</button>
+    <button class="btn" onclick="clearGrid()">Delete</button>
+  </div>
+
+  <script>
+     window.onload = function() {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => {
+        let index = cell.getAttribute('data-index');
+        let savedText = localStorage.getItem('cell-' + index);
+        if (savedText) {
+          cell.textContent = savedText;
+        }
+      });
+    }
+
+    function saveGrid() {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => {
+        let index = cell.getAttribute('data-index');
+        localStorage.setItem('cell-' + index, cell.textContent);
+      });
+    }
+
+    function clearGrid() {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => {
+        cell.textContent = '';
+        let index = cell.getAttribute('data-index');
+        localStorage.removeItem('cell-' + index);
+      });
+      // No alert
+    }
+  </script>
+
+</body>
+</html>
